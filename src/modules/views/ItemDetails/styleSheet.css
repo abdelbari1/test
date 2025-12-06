@@ -1,0 +1,20 @@
+.image-container::-webkit-scrollbar {
+    width: 5px;
+    display: none;
+    scroll-behavior: smooth;
+  }
+  
+  /* Track */
+  .image-container::-webkit-scrollbar-track {
+    background: #000; 
+  }
+   
+  /* Handle */
+  .image-container::-webkit-scrollbar-thumb {
+    background: #888; 
+  }
+  
+  /* Handle on hover */
+  .image-container::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  }
