@@ -1,0 +1,654 @@
+[
+    {
+        "clazz": "fashion.models.user.User",
+        "table": "users",
+        "alias": "usrs",
+        "ptes": [
+            {
+                "name": "first_name",
+                "column": "first_name",
+                "alias": "fn",
+                "key": false,
+                "type": "str",
+                "array": false
+            },
+            {
+                "name": "last_name",
+                "column": "last_name",
+                "alias": "ln",
+                "key": false,
+                "type": "str",
+                "array": false
+            },
+            {
+                "name": "email",
+                "column": "email",
+                "alias": "email",
+                "key": false,
+                "type": "str",
+                "array": false
+            },
+            {
+                "name": "password",
+                "column": "pwd",
+                "alias": "ps",
+                "key": false,
+                "type": "str",
+                "array": false
+            },
+            {
+                "name": "confirm_password",
+                "column": "confirm_pwd",
+                "alias": "cp",
+                "key": false,
+                "type": "str",
+                "array": false
+            },
+            {
+                "name": "role",
+                "column": "user_role",
+                "alias": "ur",
+                "key": false,
+                "type": "fashion.models.domain.UserRole",
+                "array": false
+            },
+            {
+                "name": "uid",
+                "column": "iid",
+                "alias": "iid",
+                "key": true,
+                "type": "str",
+                "array": false
+            }
+        ],
+        "relations": [],
+        "associations": {}
+    },
+    {
+        "clazz": "fashion.models.item.Item",
+        "table": "items",
+        "alias": "its",
+        "ptes": [
+            {
+                "name": "uid",
+                "column": "iid",
+                "alias": "iid",
+                "key": true,
+                "type": "str",
+                "array": false
+            },
+            {
+                "name": "item_name",
+                "column": "item_name",
+                "alias": "in",
+                "key": false,
+                "type": "str",
+                "array": false
+            },
+            {
+                "name": "item_category",
+                "column": "item_category",
+                "alias": "it",
+                "key": false,
+                "type": "fashion.models.domain.ItemCategory",
+                "array": false
+            },
+            {
+                "name": "gender",
+                "column": "gender",
+                "alias": "ct",
+                "key": false,
+                "type": "fashion.models.domain.Gender",
+                "array": false
+            },
+            {
+                "name": "actual_price",
+                "column": "actual_price",
+                "alias": "ap",
+                "key": false,
+                "type": "int",
+                "array": false
+            },
+            {
+                "name": "currency",
+                "column": "currency",
+                "alias": "crny",
+                "key": false,
+                "type": "fashion.models.domain.Currency",
+                "array": false
+            },
+            {
+                "name": "status_item",
+                "column": "status_item",
+                "alias": "si",
+                "key": false,
+                "type": "fashion.models.domain.StatusItem",
+                "array": false
+            },
+            {
+                "name": "flash_sale",
+                "column": "flash_sale",
+                "alias": "fs",
+                "key": false,
+                "type": "int",
+                "array": false
+            },
+            {
+                "name": "edited_price",
+                "column": "edited_price",
+                "alias": "ep",
+                "key": false,
+                "type": "float",
+                "array": false
+            },
+            {
+                "name": "description",
+                "column": "description",
+                "alias": "desc",
+                "key": false,
+                "type": "str",
+                "array": false
+            },
+            {
+                "name": "item_model",
+                "column": "item_model",
+                "alias": "imdl",
+                "key": false,
+                "type": "str",
+                "array": false
+            },
+            {
+                "name": "reference",
+                "column": "reference",
+                "alias": "ref",
+                "key": false,
+                "type": "str",
+                "array": false
+            },
+            {
+                "name": "item_created",
+                "column": "item_created",
+                "alias": "ic",
+                "key": false,
+                "type": "datetime.datetime",
+                "array": false
+            }
+        ],
+        "relations": [
+            {
+                "target": "fashion.models.sizes.Sizes",
+                "property": "sizes",
+                "column": null,
+                "alias": null,
+                "cardinality": "1..n",
+                "inverted_column": "item_id",
+                "inverted_alias": "itid"
+            },
+            {
+                "target": "fashion.models.user.User",
+                "property": "user",
+                "column": "user_id",
+                "alias": "usrid",
+                "cardinality": "1..1",
+                "inverted_column": null,
+                "inverted_alias": null
+            }
+        ],
+        "associations": {}
+    },
+    {
+        "clazz": "fashion.models.sizes.Sizes",
+        "table": "sizes",
+        "alias": "sizs",
+        "ptes": [
+            {
+                "name": "uid",
+                "column": "iid",
+                "alias": "iid",
+                "key": true,
+                "type": "str",
+                "array": false
+            },
+            {
+                "name": "size",
+                "column": "size",
+                "alias": "siz",
+                "key": false,
+                "type": "str",
+                "array": false
+            },
+            {
+                "name": "quantity",
+                "column": "quantity",
+                "alias": "qty",
+                "key": false,
+                "type": "int",
+                "array": false
+            }
+        ],
+        "relations": [],
+        "associations": {}
+    },
+    {
+        "clazz": "fashion.models.wishlist.WishList",
+        "table": "wishlists",
+        "alias": "wl",
+        "ptes": [],
+        "relations": [
+            {
+                "target": "fashion.models.user.User",
+                "property": "user",
+                "column": "user_id",
+                "alias": "usrid",
+                "cardinality": "1..1",
+                "inverted_column": null,
+                "inverted_alias": null
+            },
+            {
+                "target": "fashion.models.item.Item",
+                "property": "item",
+                "column": "item_id",
+                "alias": "iid",
+                "cardinality": "1..1",
+                "inverted_column": null,
+                "inverted_alias": null
+            }
+        ],
+        "associations": {}
+    },
+    {
+        "clazz": "fashion.models.notification.Notification",
+        "table": "notification",
+        "alias": "ntf",
+        "ptes": [
+            {
+                "name": "current_date",
+                "column": "current_date",
+                "alias": "cd",
+                "key": false,
+                "type": "datetime",
+                "array": false
+            },
+            {
+                "name": "status",
+                "column": "status",
+                "alias": "sts",
+                "key": false,
+                "type": "fashion.models.domains.NotificationStatus",
+                "array": false
+            },
+            {
+                "name": "notification_status",
+                "column": "not_sts",
+                "alias": "ns",
+                "key": false,
+                "type": "fashion.models.domains.NotificationStatusItem",
+                "array": false
+            },
+            {
+                "name": "comment",
+                "column": "cmmt",
+                "alias": "cmmt",
+                "key": false,
+                "type": "str",
+                "array": false
+            }
+        ],
+        "relations": [
+            {
+                "target": "fashion.models.user.User",
+                "property": "requester",
+                "column": "req_id",
+                "alias": "reqid",
+                "cardinality": "1..1",
+                "inverted_column": null,
+                "inverted_alias": null
+            },
+            {
+                "target": "fashion.models.user.User",
+                "property": "reciever",
+                "column": "rec_id",
+                "alias": "recid",
+                "cardinality": "1..1",
+                "inverted_column": null,
+                "inverted_alias": null
+            },
+            {
+                "target": "fashion.models.item.Item",
+                "property": "item",
+                "column": "item_id",
+                "alias": "itid",
+                "cardinality": "1..1",
+                "inverted_column": null,
+                "inverted_alias": null
+            }
+        ],
+        "associations": {}
+    },
+    {
+        "clazz": "fashion.models.delivery.Delivery",
+        "table": "deliveries",
+        "alias": "dly",
+        "ptes": [
+            {
+                "name": "region",
+                "column": "region",
+                "alias": "rg",
+                "key": false,
+                "type": "fashion.models.domain.Region",
+                "array": false
+            },
+            {
+                "name": "address",
+                "column": "addrs",
+                "alias": "ads",
+                "key": false,
+                "type": "str",
+                "array": false
+            },
+            {
+                "name": "appartment",
+                "column": "appartment",
+                "alias": "app",
+                "key": false,
+                "type": "str",
+                "array": false
+            },
+            {
+                "name": "city",
+                "column": "city",
+                "alias": "cty",
+                "key": false,
+                "type": "str",
+                "array": false
+            },
+            {
+                "name": "postcode",
+                "column": "postcode",
+                "alias": "pc",
+                "key": false,
+                "type": "str",
+                "array": false
+            },
+            {
+                "name": "phone",
+                "column": "phone",
+                "alias": "ph",
+                "key": false,
+                "type": "str",
+                "array": false
+            },
+            {
+                "name": "save",
+                "column": "save_address",
+                "alias": "sv",
+                "key": false,
+                "type": "bool",
+                "array": false
+            },
+            {
+                "name": "uid",
+                "column": "iid",
+                "alias": "iid",
+                "key": true,
+                "type": "str",
+                "array": false
+            }
+        ],
+        "relations": [
+            {
+                "target": "fashion.models.user.User",
+                "property": "user",
+                "column": "user_id",
+                "alias": "usrid",
+                "cardinality": "1..1",
+                "inverted_column": null,
+                "inverted_alias": null
+            }
+        ],
+        "associations": {}
+    },
+    {
+        "clazz": "fashion.models.purchase.Purchase",
+        "table": "purchases",
+        "alias": "pch",
+        "ptes": [
+            {
+                "name": "uid",
+                "column": "iid",
+                "alias": "iid",
+                "key": true,
+                "type": "str",
+                "array": false
+            },
+            {
+                "name": "purchase_status",
+                "column": "purchase_status",
+                "alias": "ps",
+                "key": false,
+                "type": "fashion.models.domain.PurchaseStatus",
+                "array": false
+            },
+            {
+                "name": "purchase_item_status",
+                "column": "purchase_item_status",
+                "alias": "pis",
+                "key": false,
+                "type": "fashion.models.domain.PurchaseItemStatus",
+                "array": false
+            },
+            {
+                "name": "purchase_date",
+                "column": "purchase_date",
+                "alias": "pd",
+                "key": false,
+                "type": "datetime.datetime",
+                "array": false
+            }
+        ],
+        "relations": [
+            {
+                "target": "fashion.models.user.User",
+                "property": "buyer",
+                "column": "buyer_id",
+                "alias": "bid",
+                "cardinality": "1..1",
+                "inverted_column": null,
+                "inverted_alias": null
+            },
+            {
+                "target": "fashion.models.user.User",
+                "property": "seller",
+                "column": "seller_id",
+                "alias": "sid",
+                "cardinality": "1..1",
+                "inverted_column": null,
+                "inverted_alias": null
+            },
+            {
+                "target": "fashion.models.delivery.Delivery",
+                "property": "delivery",
+                "column": "delivery_id",
+                "alias": "did",
+                "cardinality": "1..1",
+                "inverted_column": null,
+                "inverted_alias": null
+            },
+            {
+                "target": "fashion.models.request_line.RequestLine",
+                "property": "lines",
+                "column": null,
+                "alias": null,
+                "cardinality": "1..n",
+                "inverted_column": "purchase_id",
+                "inverted_alias": "pid"
+            }
+        ],
+        "associations": {}
+    },
+    {
+        "clazz": "fashion.models.request_line.RequestLine",
+        "table": "request_lines",
+        "alias": "reql",
+        "ptes": [
+            {
+                "name": "quantity_purchase",
+                "column": "quantity",
+                "alias": "qty",
+                "key": false,
+                "type": "int",
+                "array": false
+            },
+            {
+                "name": "size",
+                "column": "size",
+                "alias": "size",
+                "key": false,
+                "type": "str",
+                "array": false
+            }
+        ],
+        "relations": [
+            {
+                "target": "fashion.models.item.Item",
+                "property": "item",
+                "column": "item_id",
+                "alias": "iid",
+                "cardinality": "1..1",
+                "inverted_column": null,
+                "inverted_alias": null
+            }
+        ],
+        "associations": {}
+    },
+    {
+        "clazz": "fashion.models.rental_items.RentalItem",
+        "table": "rental_items",
+        "alias": "ritem",
+        "ptes": [
+            {
+                "name": "uid",
+                "column": "iid",
+                "alias": "iid",
+                "key": true,
+                "type": "str",
+                "array": false
+            },
+            {
+                "name": "nb_of_days",
+                "column": "number_of_days",
+                "alias": "nod",
+                "key": false,
+                "type": "int",
+                "array": false
+            },
+            {
+                "name": "rental_price",
+                "column": "rental_price_by_days",
+                "alias": "rp",
+                "key": false,
+                "type": "int",
+                "array": false
+            },
+            {
+                "name": "currency",
+                "column": "currency",
+                "alias": "curr",
+                "key": false,
+                "type": "fashion.models.domain.Currency",
+                "array": false
+            }
+        ],
+        "relations": [
+            {
+                "target": "fashion.models.item.Item",
+                "property": "item",
+                "column": "item_id",
+                "alias": "itid",
+                "cardinality": "1..1",
+                "inverted_column": null,
+                "inverted_alias": null
+            }
+        ],
+        "associations": {}
+    },
+    {
+        "clazz": "fashion.models.item_booked.BookedItem",
+        "table": "booked_items",
+        "alias": "bitems",
+        "ptes": [
+            {
+                "name": "uid",
+                "column": "iid",
+                "alias": "iid",
+                "key": true,
+                "type": "str",
+                "array": false
+            },
+            {
+                "name": "requested_start_date",
+                "column": "requested_start_date",
+                "alias": "rsd",
+                "key": false,
+                "type": "datetime.datetime",
+                "array": false
+            },
+            {
+                "name": "duration",
+                "column": "duration",
+                "alias": "durt",
+                "key": false,
+                "type": "int",
+                "array": false
+            }
+        ],
+        "relations": [
+            {
+                "target": "fashion.models.rental_items.RentalItem",
+                "property": "rental_item",
+                "column": "rental_item_id",
+                "alias": "riid",
+                "cardinality": "1..1",
+                "inverted_column": null,
+                "inverted_alias": null
+            },
+            {
+                "target": "fashion.models.user.User",
+                "property": "user",
+                "column": "user_id",
+                "alias": "usrid",
+                "cardinality": "1..1",
+                "inverted_column": null,
+                "inverted_alias": null
+            },
+            {
+                "target": "fashion.models.sizes.Sizes",
+                "property": "size",
+                "column": "size_id",
+                "alias": "sid",
+                "cardinality": "1..1",
+                "inverted_column": null,
+                "inverted_alias": null
+            },
+            {
+                "target": "fashion.models.user.User",
+                "property": "owner",
+                "column": "owner_id",
+                "alias": "oid",
+                "cardinality": "1..1",
+                "inverted_column": null,
+                "inverted_alias": null
+            },
+            {
+                "target": "fashion.models.delivery.Delivery",
+                "property": "delivery",
+                "column": "delivery_id",
+                "alias": "did",
+                "cardinality": "1..1",
+                "inverted_column": null,
+                "inverted_alias": null
+            }
+        ],
+        "associations": {}
+    }
+]
